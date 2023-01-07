@@ -48,9 +48,4 @@ public class Produto {
 		this.valorTotal = valorTotal;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
 }
