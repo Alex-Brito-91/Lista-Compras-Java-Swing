@@ -1,12 +1,14 @@
 package br.com.lista;
 
+import java.math.BigDecimal;
+
 public class Produto {
 
 	private int id;
 	private String nome;
 	private int quant;
-	private double valorUn;
-	private double valorTotal;
+	private BigDecimal valorUn;
+	private BigDecimal valorTotal;
 
 	public int getId() {
 		return id;
@@ -32,20 +34,16 @@ public class Produto {
 		this.quant = quant;
 	}
 
-	public double getValorUn() {
+	public BigDecimal getValorUn() {
 		return valorUn;
 	}
 
-	public void setValorUn(double valorUn) {
+	public void setValorUn(BigDecimal valorUn) {
 		this.valorUn = valorUn;
 	}
 
-	public double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
+	public BigDecimal getValorTotal() {
+		return this.valorUn.multiply(BigDecimal.valueOf(this.quant));
 	}
 
 }
