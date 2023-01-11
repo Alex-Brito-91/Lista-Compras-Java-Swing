@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 
 public class TelaCadastro extends JFrame {
 	
@@ -22,6 +22,7 @@ public class TelaCadastro extends JFrame {
 	private JTextField textValor;
 	private JTable tabela;
 	private int geraId = 0;
+	private BigDecimal totalCompra;
 	TabelaModelo modelo = new TabelaModelo();
 	
 	public TelaCadastro() {
@@ -65,6 +66,11 @@ public class TelaCadastro extends JFrame {
 		tabela = new JTable(modelo);
 		scrollPane.setViewportView(tabela);
 		
+		JLabel lblTotalCompra = new JLabel();
+		lblTotalCompra.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTotalCompra.setBounds(316, 382, 248, 45);
+		getContentPane().add(lblTotalCompra);
+		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setBackground(new Color(154, 198, 129));
 		btnCadastrar.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -76,6 +82,7 @@ public class TelaCadastro extends JFrame {
 				p.setQuant(Integer.parseInt(spinnerQuant.getValue().toString()));
 				p.setValorUn(new BigDecimal(textValor.getText()));
 				modelo.addRow(p);
+				lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 				textProduto.setText("");
 				textValor.setText("");
 				spinnerQuant.setValue(1);
@@ -91,6 +98,7 @@ public class TelaCadastro extends JFrame {
 					modelo.setValueAt(textProduto.getText(), tabela.getSelectedRow(), 1);
 					modelo.setValueAt(spinnerQuant.getValue().toString(), tabela.getSelectedRow(), 2);
 					modelo.setValueAt(textValor.getText(), tabela.getSelectedRow(), 3);
+					lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 				}
 				
 			}
@@ -105,6 +113,7 @@ public class TelaCadastro extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(tabela.getSelectedRow() != -1) {
 					modelo.removeRow(tabela.getSelectedRow());
+					lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 				}
 			}
 		});

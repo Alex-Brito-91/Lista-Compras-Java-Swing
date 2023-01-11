@@ -1,6 +1,7 @@
 package br.com.lista;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,15 @@ public class TabelaModelo extends AbstractTableModel {
 	public void removeRow(int linha) {
 		this.dados.remove(linha);
 		this.fireTableRowsDeleted(linha, linha);
+	}
+	
+	public String totalDaCompra() {
+		BigDecimal totalCompra = new BigDecimal(0);
+		for (Produto i : dados) {
+			totalCompra = totalCompra.add(i.getValorTotal());
+		}
+		String total = DecimalFormat.getCurrencyInstance().format(totalCompra);
+	return total;
 	}
 	
 }
