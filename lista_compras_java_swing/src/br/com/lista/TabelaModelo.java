@@ -79,11 +79,4 @@ public class TabelaModelo extends AbstractTableModel {
 		this.fireTableRowsDeleted(linha, linha);
 	}
 	
-	public void somaTotal() {
-		BigDecimal totalCompra = new BigDecimal(0);
-		for (Produto i : dados) {
-			totalCompra = totalCompra.add(i.getValorTotal());
-		}
-	}
-
 }

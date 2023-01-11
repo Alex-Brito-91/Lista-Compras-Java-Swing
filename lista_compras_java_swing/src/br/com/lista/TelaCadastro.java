@@ -113,11 +113,6 @@ public class TelaCadastro extends JFrame {
 		btnExcluir.setBounds(169, 397, 90, 30);
 		getContentPane().add(btnExcluir);
 		
-		JTextPane textTotal = new JTextPane();
-		textTotal.setEditable(false);
-		textTotal.setBounds(400, 397, 164, 30);
-		getContentPane().add(textTotal);
-		
 	}
 	
 	public static void main(String[] args) {
