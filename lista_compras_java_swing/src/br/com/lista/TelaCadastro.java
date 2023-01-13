@@ -1,7 +1,6 @@
 package br.com.lista;
 
 import javax.swing.JFrame;
-
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -13,8 +12,8 @@ import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -26,8 +25,8 @@ public class TelaCadastro extends JFrame {
 	private JTextField textValor;
 	private JTable tabela;
 	private int geraId = 0;
-	private BigDecimal totalCompra;
 	TabelaModelo modelo = new TabelaModelo();
+	Locale locale = Locale.US;
 
 	public TelaCadastro() {
 		super("Cadastro de Produtos");
@@ -69,7 +68,7 @@ public class TelaCadastro extends JFrame {
 
 		tabela = new JTable(modelo);
 		scrollPane.setViewportView(tabela);
-
+		
 		JLabel lblTotalCompra = new JLabel();
 		lblTotalCompra.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotalCompra.setBounds(316, 382, 248, 45);
@@ -84,7 +83,9 @@ public class TelaCadastro extends JFrame {
 				p.setId(++geraId);
 				p.setNome(textProduto.getText());
 				p.setQuant(Integer.parseInt(spinnerQuant.getValue().toString()));
-				p.setValorUn(new BigDecimal(textValor.getText()));
+				String valorUnF = textValor.getText().replaceAll(",", ".");
+				BigDecimal valorUn = new BigDecimal(valorUnF);
+				p.setValorUn(valorUn);
 				modelo.addRow(p);
 				lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 				textProduto.setText("");
@@ -116,7 +117,9 @@ public class TelaCadastro extends JFrame {
 				if (tabela.getSelectedRow() != -1) {
 					modelo.setValueAt(textProduto.getText(), tabela.getSelectedRow(), 1);
 					modelo.setValueAt(spinnerQuant.getValue().toString(), tabela.getSelectedRow(), 2);
-					modelo.setValueAt(textValor.getText(), tabela.getSelectedRow(), 3);
+					String valorUnF = textValor.getText().replaceAll(",", ".");
+					BigDecimal valorUn = new BigDecimal(valorUnF);
+					modelo.setValueAt(valorUn, tabela.getSelectedRow(), 3);
 					lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 					textProduto.setText("");
 					textValor.setText("");
