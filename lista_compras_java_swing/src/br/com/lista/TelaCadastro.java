@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
@@ -78,6 +79,13 @@ public class TelaCadastro extends JFrame {
 		quant.setPreferredWidth(40);
 		valorUn.setPreferredWidth(60);
 		valorTotal.setPreferredWidth(70);
+		
+		DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();        
+		centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+		tabela.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+		tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+		tabela.getColumnModel().getColumn(3).setCellRenderer(centralizado);
+		tabela.getColumnModel().getColumn(4).setCellRenderer(centralizado);
 
 		JScrollPane scroll = new JScrollPane(tabela);
 		scroll.setBounds(34, 90, 530, 280);
