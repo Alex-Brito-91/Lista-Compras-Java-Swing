@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class TelaCadastro extends JFrame {
 
@@ -62,13 +64,25 @@ public class TelaCadastro extends JFrame {
 		spinnerQuant.setBounds(240, 38, 54, 25);
 		getContentPane().add(spinnerQuant);
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(34, 90, 530, 280);
-		getContentPane().add(scrollPane);
-
 		tabela = new JTable(modelo);
-		scrollPane.setViewportView(tabela);
-		
+
+		TableColumnModel colmod = tabela.getColumnModel();
+		TableColumn id = colmod.getColumn(0);
+		TableColumn produto = colmod.getColumn(1);
+		TableColumn quant = colmod.getColumn(2);
+		TableColumn valorUn = colmod.getColumn(3);
+		TableColumn valorTotal = colmod.getColumn(4);
+
+		id.setPreferredWidth(40);
+		produto.setPreferredWidth(250);
+		quant.setPreferredWidth(40);
+		valorUn.setPreferredWidth(60);
+		valorTotal.setPreferredWidth(70);
+
+		JScrollPane scroll = new JScrollPane(tabela);
+		scroll.setBounds(34, 90, 530, 280);
+		getContentPane().add(scroll);
+
 		JLabel lblTotalCompra = new JLabel();
 		lblTotalCompra.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotalCompra.setBounds(316, 382, 248, 45);

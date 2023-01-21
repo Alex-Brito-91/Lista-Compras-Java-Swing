@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
 
 public class TabelaModelo extends AbstractTableModel {
@@ -79,14 +78,14 @@ public class TabelaModelo extends AbstractTableModel {
 		this.dados.remove(linha);
 		this.fireTableRowsDeleted(linha, linha);
 	}
-	
+
 	public String totalDaCompra() {
 		BigDecimal totalCompra = new BigDecimal(0);
 		for (Produto i : dados) {
 			totalCompra = totalCompra.add(i.getValorTotal());
 		}
 		String total = DecimalFormat.getCurrencyInstance().format(totalCompra);
-	return total;
+		return total;
 	}
-	
+
 }
