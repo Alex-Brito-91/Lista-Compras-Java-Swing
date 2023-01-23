@@ -1,6 +1,7 @@
 package br.com.lista;
 
 import java.math.BigDecimal;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import javax.swing.table.AbstractTableModel;
 
 public class TabelaModelo extends AbstractTableModel {
 
+	private static final long serialVersionUID = 1L;
+	
 	private List<Produto> dados = new ArrayList<>();
 	private String[] colunas = { "ID", "Produto", "Qtd", "Valor Un", "Valor Total" };
 

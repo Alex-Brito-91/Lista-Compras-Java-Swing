@@ -24,6 +24,8 @@ import javax.swing.table.TableColumnModel;
 
 public class TelaCadastro extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField textProduto;
 	private JTextField textValor;
 	private JTable tabela;

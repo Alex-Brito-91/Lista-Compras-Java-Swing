@@ -8,6 +8,8 @@ public class Produto {
 	private String nome;
 	private int quant;
 	private BigDecimal valorUn;
+	
+	@SuppressWarnings("unused") //método setter do valor total não necessário.
 	private BigDecimal valorTotal;
 
 	public int getId() {
