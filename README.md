@@ -11,7 +11,7 @@ A lista foi desenvolvida para cadastrar, alterar e excluir itens, adicionando pr
 
 ## Instalação
 
- - Faça o [Download](https://drive.google.com/file/d/1qn4WOyKLnXGvwE16pxAypQSYSO8Wjuy5/view?usp=share_link) do arquivo Lista de Compras.jar
+ - Faça o [Download](https://drive.google.com/file/d/19jn4DjawbZa9h4phoLq6G_4PhGTmRQkF/view?usp=share_link) do arquivo Lista de Compras.jar
 
  - Abra o arquivo Lista de Compras.jar diretamente do computador caso tenha a versão 17 do OpenJDK. Caso contrário, abra o Terminal na mesma pasta em que se encontra o arquivo e digite:
  - `$ java -jar Lista\ de\ Compras.jar`
