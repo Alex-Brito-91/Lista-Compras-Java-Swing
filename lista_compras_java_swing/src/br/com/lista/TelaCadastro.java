@@ -162,6 +162,9 @@ public class TelaCadastro extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (tabela.getSelectedRow() != -1) {
 					modelo.removeRow(tabela.getSelectedRow());
+					textProduto.setText("");
+					textValor.setText("");
+					spinnerQuant.setValue(1);
 					lblTotalCompra.setText("Total da Compra: " + modelo.totalDaCompra());
 				}
 			}
